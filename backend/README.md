@@ -1,24 +1,37 @@
-# README
+# Dooist backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting started
 
-Things you may want to cover:
+`$ bundle install`
 
-* Ruby version
+## Database creation
 
-* System dependencies
+To create the database
 
-* Configuration
+`$ rails db:create`
 
-* Database creation
+To drop if you want
 
-* Database initialization
+`$ rails db:drop`
 
-* How to run the test suite
+## Database initialization
 
-* Services (job queues, cache servers, search engines, etc.)
+To fill the now created database run the following command:
 
-* Deployment instructions
+`$ rails db:seed`
 
-* ...
+This will create a mock user for your to use with a project and a few todos in place
+
+```bash
+username: "tester",
+email: "test@email.com",
+password: "SuperSecretPassword"
+```
+
+### Migrations
+
+## Tests
+
+We are using Rspec for testing which comes with a factory creation for models
+
+`$ bundle exec rspec [file path]`
