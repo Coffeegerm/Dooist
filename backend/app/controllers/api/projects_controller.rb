@@ -1,11 +1,11 @@
 class Api::ProjectsController < ApplicationController
+  load_and_authorize_resource
+
   def index
-    @projects = Project.all
     render json: @projects, status: :ok
   end
 
   def show
-    @project = Project.find(params[:id])
     render json: @project, status: :ok
   end
 
@@ -25,8 +25,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
-    if @project.update(create_project_params)
+    if @project.update(update_project_params)
       render json: @project, status: :ok
     else
       render json: { errors: @project.errors }, status: :unprocessable_entity
@@ -34,6 +33,10 @@ class Api::ProjectsController < ApplicationController
   end
 
   private def create_project_params
+    params.require(:project).permit(:name)
+  end
+
+  private def update_project_params
     params.require(:project).permit(:name)
   end
 end

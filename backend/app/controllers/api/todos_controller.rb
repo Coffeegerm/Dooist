@@ -1,12 +1,16 @@
 class Api::TodosController < ApplicationController
+  load_and_authorize_resource class: "TodoItem"
+
   def index
-    @todos = TodoItem.all
     render json: @todos
   end
 
   def show
-    @todo = TodoItem.find(params[:id])
-    render json: @todo
+    if authorize! :read, @todo
+      render json: @todo
+    else
+      render json: { errors: @todo.errors }, status: :unprocessable_entity
+    end
   end
 
   def create

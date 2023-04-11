@@ -15,9 +15,42 @@ first_user =
     }
   )
 
-first_project = Project.create({ name: "ProjectName", user_id: 1 })
+first_project = Project.create({ name: "Science 101", user_id: first_user.id })
 
 first_todo =
-  TodoItem.create({ title: "TodoItemTitle", project_id: 1, user_id: 1 })
+  TodoItem.create(
+    {
+      title: "Take Physics Test",
+      description: "Have to take test to pass the class.",
+      project_id: first_project.id,
+      user_id: first_user.id
+    }
+  )
 
-second_todo = TodoItem.create({ title: "TodoItemTitle", user_id: 1 })
+second_todo =
+  TodoItem.create({ title: "Take trash out", user_id: first_user.id })
+
+second_user =
+  User.create(
+    {
+      username: "tester2",
+      email: "test2@email.com",
+      password: "SuperSecretPassword2"
+    }
+  )
+
+second_user_first_project =
+  Project.create({ name: "English 101", user_id: second_user.id })
+
+second_user_first_todo =
+  TodoItem.create(
+    {
+      title: "Take Beowulf Test",
+      description: "Have to take test to pass the class.",
+      project_id: second_user_first_project.id,
+      user_id: second_user.id
+    }
+  )
+
+second_user_second_todo =
+  TodoItem.create({ title: "Take trash out", user_id: second_user.id })
