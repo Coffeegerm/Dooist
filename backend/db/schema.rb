@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2023_04_05_210943) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "todo_items", force: :cascade do |t|
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2023_04_05_210943) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "project_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

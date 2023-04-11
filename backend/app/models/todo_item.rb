@@ -1,6 +1,7 @@
 class TodoItem < ApplicationRecord
   validates_presence_of :title
 
+  belongs_to :user, optional: true
   belongs_to :project, optional: true
 
   def mark_complete!

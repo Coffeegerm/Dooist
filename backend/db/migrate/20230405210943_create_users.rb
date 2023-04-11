@@ -7,5 +7,8 @@ class CreateUsers < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_column :todo_items, :user_id, :integer, null: true
+    add_column :projects, :user_id, :integer, null: true
   end
 end
